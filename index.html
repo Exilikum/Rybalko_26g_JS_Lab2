@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+</head>
+<body>
+    <script>
+        // Задача 1: Замінити всі великі літери на малі в заданому текстовому рядку.
+        console.log("Задача 1: Замінити всі великі літери на малі в заданому текстовому рядку.");
+        let inputString = prompt("Введіть текстовий рядок для задачі 1:");
+        console.log("Введені дані: " + inputString);
+        if (inputString) {
+            let lowerCaseString = inputString.toLowerCase();
+            console.log("Результат виконання скрипта: " + lowerCaseString);
+        } else {
+            console.log("Введено порожній рядок або скасовано введення.");
+        }
+
+        // Задача 2: Обчислити степінь натурального числа рекурсивно.
+        console.log("Задача 2: Обчислити степінь натурального числа рекурсивно.");
+        let base = prompt("Введіть натуральне число (основу) для задачі 2:");
+        let exponent = prompt("Введіть степінь для задачі 2:");
+        console.log("Введені дані: основа = " + base + ", степінь = " + exponent);
+        if (isNaN(base) || isNaN(exponent) || base === '' || exponent === '' || base <= 0 || exponent < 0) {
+            console.log("Некоректні введені дані.");
+        } else {
+            base = parseInt(base);
+            exponent = parseInt(exponent);
+            function power(base, exponent) {
+                if (exponent === 0) return 1;
+                return base * power(base, exponent - 1);
+            }
+            let result = power(base, exponent);
+            console.log("Результат виконання скрипта: " + result);
+        }
+
+        // Задача 3: Гра "Вгадай число".
+        console.log("Задача 3: Напишіть гру 'Вгадай число'.");
+        let randomNumber = Math.floor(Math.random() * 11);
+        let attempts = 3;
+        let guessed = false;
+        console.log("Згенероване випадкове число: " + randomNumber);
+        while (attempts > 0 && !guessed) {
+            let guess = prompt("Спробуйте вгадати число від 0 до 10. У вас залишилось " + attempts + " спроб:");
+            console.log("Введені дані: " + guess);
+            if (guess === null) {
+                console.log("Введення скасовано.");
+                break;
+            }
+            guess = parseInt(guess);
+            if (isNaN(guess)) {
+                console.log("Некоректне введене число.");
+                continue;
+            }
+            if (guess === randomNumber) {
+                alert("Вітаємо! Ви вгадали число!");
+                console.log("Результат виконання скрипта: Вгадали число.");
+                guessed = true;
+            } else if (guess > randomNumber) {
+                alert("Загадане число менше.");
+                console.log("Загадане число менше.");
+            } else {
+                alert("Загадане число більше.");
+                console.log("Загадане число більше.");
+            }
+            attempts--;
+        }
+        if (!guessed) {
+            alert("Ви використали всі спроби. Загадане число було: " + randomNumber);
+            console.log("Результат виконання скрипта: Не вдалося вгадати число.");
+        }
+    </script>
+</body>
+</html>
